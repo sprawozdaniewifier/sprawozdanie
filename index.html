@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Sprawozdanie by sprawozdaniewifier</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Sprawozdanie</h1>
+      <h2 class="project-tagline">wifier</h2>
+      <a href="https://github.com/sprawozdaniewifier/sprawozdanie" class="btn">View on GitHub</a>
+      <a href="https://github.com/sprawozdaniewifier/sprawozdanie/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/sprawozdaniewifier/sprawozdanie/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <p>Programowanie aplikacji klient-serwer</p>
+
+<p>Sprawozdanie z pracy projektowej</p>
+
+<p>Wifier - mobilny skaner sieci WiFi</p>
+
+<p>Dawid Majewski 8067
+Aleksander Jasiński 8059
+Adrian Mikołajczyk 8069
+Mateusz Halulko 8335
+Patryk Jaśkiewicz 8060
+Jakub Niespodziński 8072</p>
+
+<p>Informatyka, studia inżynierskie, sem. VI</p>
+
+<p>2015
+1. Charakterystyka ogólna projektu
+1.1 Opis odbiorcy,  dla którego  przeznaczony jest system, część serwerowa i kliencka</p>
+
+<pre><code>Wifier to w założeniu prosty i szybki skaner sieci WiFi przedstawiający graficznie zebrane dane, tworząc tym samym swoistą mapę rozmieszczenia sieci WiFi na terenie kraju, województwa czy okolicy. Klient aplikacji Wifier przeznaczony jest dla użytkowników systemu Android, którzy chcą rozbudowywać bazę danych projektu i  współtworzyć mapę sieci WiFi w swoim otoczeniu. Użytkownik tej aplikacji jest w stanie zlokalizować interesującą go sieć lub sieci WiFi (zobaczyć dane miejsce/miejsca na mapie). W aplikacji przewidziany został ranking oceniania danej sieci aby wyeliminować te najsłabsze, które praktycznie nie nadają się do użytku. Aplikacja webowa jest ogólnodostępna dla wszystkich użytkowników sieci Web. Z tego poziomu możemy przeglądać sieci WiFi, planując wyjazd w nieznane nam miejsce gdzie będziemy mogli uzyskać odpowiednio szybki, stabilny i co ważne bezpłatny dostęp do Internetu.
+</code></pre>
+
+<p>Mimo że aplikacja kierowaną do dość wąskiego grona odbiorców nie chcemy jej sztucznie ograniczać, liczba użytkowników dla których dostępna jest aplikacja jest nieograniczona.
+Dane które przechowywać i przetwarzać będzie aplikacja to: </p>
+
+<ul>
+<li>parametry i specyfikacja sieci</li>
+<li>dane geolokalizacyjne</li>
+</ul>
+
+<p>1.2 Wymagania funkcjonalne systemu, niefunkcjonalne, user stories
+Wymagania funkcjonalne:
+Platforma Android:</p>
+
+<ul>
+<li>Aplikacja wskazuje aktualną pozycję użytkownika na mapie (Użytkownik)</li>
+<li>Pokazuje odległość do najbliższej otwartej sieci WiFi korzystając z bazy danych (Użytkownik)</li>
+<li>Pokazuje "n" najbliższych sieci WiFi (Użytkownik)</li>
+<li>Skanowanie sieci WiFi (Użytkownik)
+Platforma stacjonarna:</li>
+<li>Pobieranie i przechowywanie informacji o sieciach WiFi (Użytkownik)</li>
+<li>Usuwanie rekordów z bazy danych (Administrator)</li>
+<li>Przeglądanie zawartości bazy danych (Administrator)
+Wymagania niefunkcjonalne:
+Platforma Android:</li>
+<li>Urządzenie z systemem Android w wersji od 4.0.4</li>
+<li>Dostęp do Internetu</li>
+<li>Moduł GPS</li>
+<li>Dostęp do sklepu aplikacji Google Play</li>
+<li>Przejrzysty  i intuicyjny interfejs
+Platforma stacjonarna:</li>
+<li>Przeglądarka Internetowa </li>
+<li>Dostęp do Internetu
+Users stories:</li>
+<li>Jako użytkownik chcę aby aplikacja była łatwa w obsłudze, ponieważ będzie używana w ciągłym ruchu, zatem nie może wymagać od użytkownika wielu interakcji. </li>
+<li>Jako użytkownik aplikacji chciałbym żeby była przejrzysta, aby można szybko odnaleźć wszystkie potrzebne funkcje. </li>
+<li>Jako użytkownik chciałbym aby aplikacja działała płynnie i nie obciążała systemu, abym mógł bezproblemowo używać telefonu. </li>
+<li>Jako użytkownik aplikacji chciałbym by ta powiadamiała mnie o każdym dodanym rekordzie, nawet gdy aplikacja działa w tle, żebym mógł monitorować jej aktywność.</li>
+<li>Jako administrator chcę mieć możliwość zarządzania wpisami, tak by móc kontrolować umieszczane przez użytkowników dane.
+1.3 Moduły systemu (tzw. podsystemy)
+Aplikacja webowa:</li>
+<li>moduł mapy google</li>
+<li>moduł administracji</li>
+<li>moduł zarządzania wyświetlanych treści</li>
+<li>moduł zarządzania kontem
+Aplikacja Android:</li>
+<li>moduł mapy google</li>
+<li>moduł skanera sieci</li>
+<li>moduł gps</li>
+<li>moduł zarządzania wyświetlanych treści</li>
+<li>moduł transportu danych</li>
+<li><p>moduł właściwości</p></li>
+</ul>
+
+<ol>
+<li>Baza danych
+Najważniejsze tabele: Użytkownik, Urządzenie, Sieć 
+Tabele pomocnicze: Współrzędne urządzenia, Współrzędne sieci, Typ sieci, Ranking
+Tabele dodatkowe: Dodatkowa1, Dodatkowa2
+Typy użytkowników: Użytkownik niezalogowany, Użytkownik zalogowany, Administrator
+Typy sieci: Otwarta, Zamknięta
+Istotnym elementem przetwarzanych danych są współrzędne urządzeń i współrzędne sieci służące do zapisu lokalizacji  sieci oraz jej graficznej prezentacji na mapie. </li>
+</ol>
+
+<p>2.1 Schemat tabel i relacji pomiędzy nimi
+Diagram ERD</p>
+
+<p>Pomocniczy zrzut bazy danych w Accessie</p>
+
+<p>2.2 Opis tabel
+Klucze główne - ID użytkownik, ID XY urządzenia, ID urządzenia, ID Typ sieci, ID Sieć, ID Ranking, ID XY Sieci
+Tabele odpowiedzialne za gromadzenie danych do projektu:
+Użytkownik – zbiera dane o użytkowniku, jego login, hasło, uprawnienia oraz opcjonalnie adres email.
+Urządzenie – zbiera dane o położeniu geograficznym urządzenia skanującego, oraz jego nazwę pozwalającą na identyfikację.
+Sieć – zbiera dane o położeniu geograficznym sieci, jej typie (otwarta/zamknięta), jej nazwę, urządzenie które ją wykryło a także oznaczenie kolorem na mapie zależne od typu sieci.</p>
+
+<p>2.3 Opis relacji
+Jeden do wielu – występuje gdy rekord z tabeli A może posiadać wiele dopasowań w tabeli B ale rekord z tabeli B może mieć tylko jedno dopasowanie w tabeli A.
+W bazie danych nie występują relacje jeden do jednego.
+KP = Klucz podstawowy
+KO = Klucz obcy
+Opis relacji
+RELACJA 1
+Klucz podstawowy relacji znajduje się w TABELI Użytkownik a jego nazwa to ID_User. Klucz obcy naszego klucza podstawowego znajduje się w TABELI Urządzenie a jego nazwa to ID_Uzytkownik.</p>
+
+<p>KP  Użytkownik.ID_User
+KO  Urządzenie.ID_Uzytkownik
+Jeden użytkownik może posiadać wiele urządzeń na których będzie mógł korzystać z aplikacji.</p>
+
+<p>RELACJA 2
+Klucz podstawowy relacji znajduje się w TABELI Współrzędne urządzenia a jego nazwa to ID_XY_Urządzenia. Klucz obcy naszego klucza podstawowego znajduje się w TABELI Urządzenie a jego nazwa to ID_XY_Urządzenia.</p>
+
+<p>KP  Współrzędne urządzenia.ID_XY_Urządzenia
+KO  Urządzenie.ID_XY_Urządzenia
+Na jednych współrzędnych geograficznych może znajdować się wiele urządzeń skanujących otoczenie w poszukiwaniu sieci. </p>
+
+<p>RELACJA 3
+Klucz podstawowy relacji znajduje się w TABELI Współrzędne Urządzenie a jego nazwa to ID_Urządzenia. Klucz obcy naszego klucza podstawowego znajduje się w TABELI Dodatkowa_1 a jego nazwa to ID_urządzenie.</p>
+
+<p>KP  Urządzenie.ID_Urządzenia<br>
+KO  Dodatkowa_1.ID_urządzenie</p>
+
+<p>RELACJA 4
+Klucz podstawowy relacji znajduje się w TABELI Sieć a jego nazwa to ID_Sieć. Klucz obcy naszego klucza podstawowego znajduje się w TABELI Dodatkowa_1 a jego nazwa to ID_Sieć.</p>
+
+<p>KP  Sieć.ID_Sieć
+KO  Dodatkowa_1.ID_Sieć</p>
+
+<p>RELACJA 3 i 4 oraz tabela Dodatkowa_1 ma na celu przechowania kluczy obcych Tabeli Sieć oraz Urządzenie. Dzięki temu zabiegowi unikamy tworzenia relacji innych niż jeden do wielu.</p>
+
+<p>RELACJA 5
+Klucz podstawowy relacji znajduje się w TABELI Współrzędne Typ_sieci a jego nazwa to ID_Typ_sieci. Klucz obcy naszego klucza podstawowego znajduje się w TABELI Sieć a jego nazwa to ID_Typ_sieci.</p>
+
+<p>KP  Typ_sieci.ID_Typ_sieci
+KO  Sieć.ID_Typ_sieci
+Wiele sieci może posiadać jeden typ sieci np. sieć zamknięta.</p>
+
+<p>RELACJA 6
+Klucz podstawowy relacji znajduje się w TABELI Współrzędne_sieci a jego nazwa to ID_XY_Sieci. Klucz obcy naszego klucza podstawowego znajduje się w TABELI Sieć a jego nazwa to ID_XY_Sieci.</p>
+
+<p>KP  Współrzędne_sieci.ID_XY_Sieci
+KO  Sieć.ID_XY_Sieci
+Wiele sieci może posiadać jedne współrzędne na których występuje, np router A udostępnia sieć zamknięta A, a router B leżący obok routera A udostępnia sieć otwartą B.</p>
+
+<p>RELACJA 7
+Klucz podstawowy relacji znajduje się w TABELI Sieć a jego nazwa to ID_Sieć. Klucz obcy naszego klucza podstawowego znajduje się w TABELI Dodatkowa_2 a jego nazwa to ID.</p>
+
+<p>KP  Sieć.ID_Sieć
+KO  Dodatkowa_2.ID
+RELACJA 8 
+Klucz podstawowy relacji znajduje się w TABELI Ranking a jego nazwa to ID_ranking. Klucz obcy naszego klucza podstawowego znajduje się w TABELI Dodatkowa_2 a jego nazwa to ID_Ranking</p>
+
+<p>KP  Ranking.ID_ranking
+KO  Dodatkowa_2.ID_Ranking
+Wiele sieci może posiadać dostęp do jednego rankingu jak np. Ranking jakości sygnału</p>
+
+<p>RELACJA 7 i 8 oraz tabela Dodatkowa_2 ma na celu przechowania kluczy obcych Tabeli Sieć oraz Ranking. Dzięki temu zabiegowi unikamy tworzenia relacji innych niż jeden do wielu.</p>
+
+<pre><code>2.4 Implementacja bazy danych 
+</code></pre>
+
+<p>Przedstawienie graficzne = MS Office Access 2007, relacyjna baza danych została utworzona za pomocą systemu zarządzania bazami danych MySQL oraz PHPMyAdmin.</p>
+
+<ol>
+<li>Grupy użytkowników systemu i ich prawa dostępu
+3.1 Opis grup i czynności jakie mogą wykonywać
+Aplikacja Webowa
+Administratorzy – odpowiadają za sprawdzanie poprawności danych, posiadają wszystkie prawa zalogowanego użytkownika.
+Użytkownicy – osoby zalogowane, posiadające możliwości filtracji oraz przeglądania danych sieci.
+Goście – możliwość wyświetlenia wszystkich sieci znajdujących się w bazie danych jednak bez jakichkolwiek oznaczeń.</li>
+</ol>
+
+<p>Android
+Użytkownicy - osoby zalogowane, mogące dodawać znalezione sieci oraz przeglądać, filtrować dane o nich.
+Goście - osoby niezalogowane, mogące przeglądać sieci w pewnym ograniczonym promieniu (np. 500 metrów) od swojej aktualnej pozycji.</p>
+
+<pre><code>3.2 Wykaz praw przypisanych poszczególnym grupom do poszczególnych tabel
+</code></pre>
+
+<p>Opis praw implementowanych przez narzędzie baz danych wybrane do projektu, np.
+R – możliwość odczytu danych zapisanych w tabeli
+W– możliwość zapisu nowych rekordów
+X – możliwość usunięcia danego rekordu
+U – możliwość edycji danych w tabeli
+A – możliwość zmiany struktury
+    Administratorzy Użytkownicy zalogowani Goście
+Użytkownik R W X U A   R X U   W
+Urządzenie R W X U A   R W R
+Współrzędne urządzenia  R W X U A   R W R
+Sieć   R W X U A   R W X   R
+Współrzędne sieci    R W X U A   R W X   R
+Typ sieci   R W X U A   R W ---
+Ranking R W X U A   R W ---
+Kwerenda1   R X A   R X ---
+Kwerenda1 - kwerenda wybierająca z Tabel (Użytkownik i Sieć) aby zalogowany użytkownik mógł usunąć wyszukaną przez siebie sieć.</p>
+
+<ol>
+<li>Diagramy przepływu danych (DFD)
+4.1 Kontekstowy DFD</li>
+</ol>
+
+<p>Diagram poziomu zerowego - komunikacja systemu z obiektami zewnętrznymi</p>
+
+<ol>
+<li>Diagramy: przypadków użycia
+Diagram przypadków użycia: Aplikacja Webowa</li>
+</ol>
+
+<p>Diagram przypadków użycia: Aplikacja Android</p>
+
+<ol>
+<li>
+<p>Specyfikacja procesów
+6.1 Szczegółowe algorytmy procesów
+Algorytmy (min. 5) powinny opisywać procesy charakterystyczne dla wybranego tematu. Nie specyfikujemy procesów typowych i powtarzalnych, jak np. dodaj do bazy, usuń, zaloguj się, itp.
+6.2 Algorytmy opisujemy schematami blokowymi z wykorzystaniem instrukcji SQL przy odwoływaniu się do danych w bazach oraz języka Java przy pozostałych instrukcjach. </p>
+
+<ol>
+<li>Projekt interfejsu użytkownika
+Graficzne przedstawienie trzech wybranych interfejsów (paneli), np. gościa, użytkownika zarejestrowanego i administratora, w formacie statycznych stron HTML</li>
+</ol>
+</li>
+<li>Technologie oraz narzędzia użyte w cyklu tworzenia projektu
+3.1. Technologie
+3.2. Narzędzia</li>
+<li>Cykl tworzenia  oprogramowania
+4.1. Zaprojektowanie bazy danych
+4.2. Zaprojektowanie serwisu internetowego
+4.2.1. Wygląd interfejsu strony
+4.2.2. Funkcja odpowiedzialna za mapę w serwisie internetowym
+4.3. Zaprojektowanie aplikacji mobilnej</li>
+<li>Testy aplikacji
+5.1. Testy aplikacji mobilnej
+5.1.1. Testy systemowe aplikacji mobilnej
+5.1.2. Testy ergonomii aplikacji mobilnej
+5.1.3. Testy interfejsu aplikacji mobilnej
+5.1.4. Testy bezpieczeństwa aplikacji mobilnej
+5.1.4. Testy jednostkowe aplikacji mobilnej
+5.2. Testy serwisu internetowego
+5.2.1. Testy systemowe serwisu internetowego
+5.2.2. Testy jednostkowe serwisu internetowego</li>
+<li>Wnioski z zaprojektowania interaktywnej</li>
+</ol>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/sprawozdaniewifier/sprawozdanie">Sprawozdanie</a> is maintained by <a href="https://github.com/sprawozdaniewifier">sprawozdaniewifier</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
+
